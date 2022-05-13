@@ -9,6 +9,10 @@ import Appointemnt from './Pages/Appointment/Appointemnt';
 import Signup from './Pages/Signup/Signup';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
 import { Toaster } from "react-hot-toast";
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyAppointments from './Pages/Dashboard/MyAppointments/MyAppointments';
+import Review from './Pages/Review/Review';
+import MyReview from './Pages/Dashboard/MyReview/MyReview';
 
 function App() {
   return (
@@ -27,6 +31,17 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        >
+          <Route index element={<MyAppointments></MyAppointments>}></Route>
+          <Route path='review' element={<MyReview></MyReview>}></Route>
+        </Route>
       </Routes>
       <Toaster />
     </div>

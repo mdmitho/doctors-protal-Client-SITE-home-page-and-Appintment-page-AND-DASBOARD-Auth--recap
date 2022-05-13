@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const Navbar = () => {
@@ -13,21 +13,26 @@ const Navbar = () => {
 
   const menuItem = (
     <>
-      <li className="font-bold">
-        <Link to="/">Home </Link>
+      <li className="font-bold m-2">
+        <NavLink to="/">Home </NavLink>
       </li>
-      <li className="font-bold">
-        <Link to="/about">About</Link>
+      <li className="font-bold m-2">
+        <NavLink to="/about">About</NavLink>
       </li>
-      <li className="font-bold">
-        <Link to="/appointment">Appointment</Link>
+      <li className="font-bold m-2">
+        <NavLink to="/appointment">Appointment</NavLink>
       </li>
-      <li className="font-bold">
-        <Link to="/review">Review</Link>
+      <li className="font-bold m-2">
+        <NavLink to="/review">Review</NavLink>
       </li>
-      <li className="font-bold">
-        <Link to="/contact">Contact</Link>
+      <li className="font-bold m-2">
+        <NavLink to="/contact">Contact</NavLink>
       </li>
+      {user && (
+        <li className="font-bold m-2">
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
     </>
   );
   return (
@@ -57,9 +62,9 @@ const Navbar = () => {
             {menuItem}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case font-bold text-xl">
+        <NavLink to="/" className="btn btn-ghost normal-case font-bold text-xl">
           Doctor Portal
-        </Link>
+        </NavLink>
       </div>
       <div className="navbar-center   lg:flex sm:hidden   ">
         <ul className="menu menu-horizontal  p-0">{menuItem}</ul>
@@ -71,9 +76,9 @@ const Navbar = () => {
             Sign Out
           </button>
         ) : (
-          <Link to="/login" className="btn ">
+          <NavLink to="/login" className="btn ">
             login
-          </Link>
+          </NavLink>
         )}
       </div>
     </div>

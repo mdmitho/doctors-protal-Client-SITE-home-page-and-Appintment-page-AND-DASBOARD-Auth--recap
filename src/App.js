@@ -8,6 +8,7 @@ import Login from './Pages/Login/Login';
 import Appointemnt from './Pages/Appointment/Appointemnt';
 import Signup from './Pages/Signup/Signup';
 import RequireAuth from './Pages/RequireAuth/RequireAuth';
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           }
         />
       </Routes>
+      <Toaster />
     </div>
   );
 }

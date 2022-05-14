@@ -18,7 +18,11 @@ const AvailableAppointments = ({date}) => {
 // },[formattedDate])
 
 
-const { data:services , isLoading,refetch} = useQuery("available", () =>
+const {
+  data: services,
+  isLoading,
+  refetch,
+} = useQuery(["available", formattedDate], () =>
   fetch(`http://localhost:5000/available?date=${formattedDate}`).then((res) => res.json())
 );
 

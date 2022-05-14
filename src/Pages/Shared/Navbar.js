@@ -33,6 +33,15 @@ const Navbar = () => {
           <NavLink to="/dashboard">Dashboard</NavLink>
         </li>
       )}
+      {user ? (
+        <button onClick={logout} className="font-bold m-2">
+          Sign Out
+        </button>
+      ) : (
+        <NavLink to="/login" className="btn ">
+          login
+        </NavLink>
+      )}
     </>
   );
   return (
@@ -62,24 +71,31 @@ const Navbar = () => {
             {menuItem}
           </ul>
         </div>
+
         <NavLink to="/" className="btn btn-ghost normal-case font-bold text-xl">
           Doctor Portal
         </NavLink>
       </div>
+      <div className="navbar-end">
+        <label tabIndex="1" for="dashboard-sidebar" className="btn btn-ghost lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
+      </div>
       <div className="navbar-center   lg:flex sm:hidden   ">
         <ul className="menu menu-horizontal  p-0">{menuItem}</ul>
-      </div>
-      <div className="navbar-end ">
-        {user ? (
-          <button onClick={logout}
-           className="btn">
-            Sign Out
-          </button>
-        ) : (
-          <NavLink to="/login" className="btn ">
-            login
-          </NavLink>
-        )}
       </div>
     </div>
   );
